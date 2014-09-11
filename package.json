@@ -1,7 +1,7 @@
 {
   "name": "mbtileserv",
-  "version": "0.0.0",
-  "description": "",
+  "version": "1.0.0",
+  "description": "A Google/XYZ and TMS mbtiles tile server",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -10,8 +10,20 @@
   "bin": {
     "mbtileserv": "./index.js"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "davvo",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Eniro/mbtileserv.git"
+  },
+  "keywords": [
+    "tms",
+    "mbtiles"
+  ],
+  "bugs": {
+    "url": "https://github.com/Eniro/mbtileserv/issues"
+  },
+  "homepage": "https://github.com/Eniro/mbtileserv"
+  "license": "MIT",
   "dependencies": {
     "tilelive": "^5.2.2",
     "express": "^4.9.0",
