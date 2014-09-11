@@ -21,7 +21,7 @@
 
             window.onload = function () {
                 map = L.map('map').setView([59.31566, 18.05955], 0);
-                L.tileLayer('OSMBright/{z}/{x}/{y}.png', {
+                L.tileLayer('plain_1/{z}/{x}/{y}.png', {
                     tms: true
                 }).addTo(map);
             }
