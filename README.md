@@ -1,15 +1,17 @@
 mbtileserv
 ==========
 
-Google and TMS enabled [mbtiles](https://www.mapbox.com/foundations/an-open-platform/#mbtiles) server
+Google and TMS enabled [mbtiles](https://www.mapbox.com/foundations/an-open-platform/#mbtiles) server.
 
-Read more tile schemes [here](http://www.maptiler.org/google-maps-coordinates-tile-bounds-projection/)
+Uses [tilelive.js](https://github.com/mapbox/tilelive.js/) and [node-mbtiles](https://github.com/mapbox/node-mbtiles).
+
+Read more tile schemes at [Tiles à la Google Maps](http://www.maptiler.org/google-maps-coordinates-tile-bounds-projection/).
 
 # Install
 
 From [npm](https://www.npmjs.org/)
 
-    $ npm install -g
+    $ npm install -g mbtileserv
 
 Or from source
 
