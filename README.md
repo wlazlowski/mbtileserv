@@ -1,12 +1,16 @@
 mbtileserv
 ==========
 
-Install mbtileserv
+TMS [mbtiles](https://www.mapbox.com/foundations/an-open-platform/#mbtiles) server
+
+# Install
     
     $ git clone https://github.com/Eniro/mbtileserv.git
     $ cd mbtileserv
     $ npm install -g
-    
+  
+# Run
+
 Start server on port 5000 and load all .mbtiles in the current directory
 
     $ mbtileserv
