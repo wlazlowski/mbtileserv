@@ -22,7 +22,7 @@
                 layers = {};
 
             window.onload = function () {
-                map = L.map('map').setView([59.31566, 18.05955], 0);
+                map = L.map('map').setView([59.31566, 18.05955], 3);
 
                 {{#layers}}
                     layers['{{.}}'] = L.tileLayer('{{.}}/{z}/{x}/{y}.png', {
