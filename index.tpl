@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="sv">
     <head>
-        <title>eniro-leaflet</title>
+        <title>mbtileserv</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
         <script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
@@ -22,10 +22,10 @@
                 layers = {};
 
             window.onload = function () {
-                map = L.map('map').setView([59.31566, 18.05955], 3);
+                map = L.map('map').setView([0, 0], 1);
 
                 {{#layers}}
-                    layers['{{.}}'] = L.tileLayer('{{.}}/{z}/{x}/{y}.png', {
+                    layers['{{.}}'] = L.tileLayer('tms/{{.}}/{z}/{x}/{y}.png', {
                         tms: true
                     });
                 {{/layers}}

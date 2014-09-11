@@ -9,7 +9,9 @@ var fs = require('fs'),
 var dir = process.argv[2] || '.',
     port = process.argv[3] || 5000;
 
-var tpl = fs.readFileSync('index.tpl').toString();
+var transparent = new Buffer('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVQYV2NgYAAAAAMAAWgmWQ0AAAAASUVORK5CYII=', 'base64');
+
+var tpl = fs.readFileSync(__dirname + '/index.tpl').toString();
 
 require('mbtiles').registerProtocols(tilelive);
 
@@ -50,14 +52,17 @@ loadSources(dir, function (err, sources) {
         res.send(html);
     });
 
-    app.get('/:layer/:z/:x/:y.:ext', function (req, res) {
-        var layer = req.params.layer,
+    app.get('/:scheme(xyz|tms)/:layer/:z/:x/:y.:ext', function (req, res) {
+        var scheme = req.params.scheme,
+            layer = req.params.layer,
             z = req.params.z,
             x = req.params.x,
             y = req.params.y;
 
         // Flip TMS y axis
-        y = Math.pow(2, z) - 1 - y;
+        if (scheme === 'tms') {
+            y = Math.pow(2, z) - 1 - y;
+        }
 
         if (!sources[layer]) {
             return res.status(404).send('Unknown layer ' + layer);
@@ -65,14 +70,18 @@ loadSources(dir, function (err, sources) {
 
         sources[layer].getTile(z, x, y, function (err, tile, headers) {
             if (err) {
-                console.warn("Error getting tile ", req.path);
-                return res.status(500).send(err);
+                res.set({
+                    'Content-Type': 'image/png',
+                    'Content-Length': transparent.length
+                });
+                res.send(transparent);
+            } else {
+                res.set({
+                    'Content-Type': headers['Content-Type'],
+                    'Content-Length': tile.length
+                });
+                res.send(tile);
             }
-            res.set({
-                'Content-Type': headers['Content-Type'],
-                'Content-Length': tile.length
-            });
-            res.send(tile);
         });
 
     });
