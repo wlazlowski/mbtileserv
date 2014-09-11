@@ -56,7 +56,7 @@ loadSources(dir, function (err, sources) {
                 return res.status(500).send(err);
             }
             res.set({
-                'Content-Type': headers['Content-Length'],
+                'Content-Type': headers['Content-Type'],
                 'Content-Length': tile.length
             });
             res.send(tile);
