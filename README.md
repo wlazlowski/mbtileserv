@@ -19,6 +19,12 @@ Start server on port 8080 and load all .mbtiles in the /data directory
 
     $ mbtileserv /data 8080
 
-Fetch tiles
+# Use
 
-    http://localhost:5000/plain_1/0/0/0.png
+Run example page
+
+[http://localhost:5000/test.html](http://localhost:5000/test.html)
+    
+Fetch a tile
+
+[http://localhost:5000/plain_1/0/0/0.png](http://localhost:5000/plain_1/0/0/0.png)
