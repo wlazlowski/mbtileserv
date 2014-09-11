@@ -22,7 +22,7 @@
   "bugs": {
     "url": "https://github.com/Eniro/mbtileserv/issues"
   },
-  "homepage": "https://github.com/Eniro/mbtileserv"
+  "homepage": "https://github.com/Eniro/mbtileserv",
   "license": "MIT",
   "dependencies": {
     "tilelive": "^5.2.2",
