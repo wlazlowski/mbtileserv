@@ -1,11 +1,11 @@
 mbtileserv
 ==========
 
-Google and TMS enabled [mbtiles](https://www.mapbox.com/foundations/an-open-platform/#mbtiles) server.
+Google XYZ and TMS enabled [mbtiles](https://www.mapbox.com/foundations/an-open-platform/#mbtiles) server.
 
 Uses [tilelive.js](https://github.com/mapbox/tilelive.js/) and [node-mbtiles](https://github.com/mapbox/node-mbtiles).
 
-Read more tile schemes at [Tiles à la Google Maps](http://www.maptiler.org/google-maps-coordinates-tile-bounds-projection/).
+Read more about map tiles and tile schemes at [Tiles à la Google Maps](http://www.maptiler.org/google-maps-coordinates-tile-bounds-projection/).
 
 # Install
 
@@ -35,7 +35,7 @@ Run example page (shows all loaded layers)
 
 [http://localhost:5000/](http://localhost:5000/)
 
-Fetch a Google/XYZ tile
+Fetch a Google XYZ tile
 
 [http://localhost:5000/xyz/plain_1/3/2/2.png](http://localhost:5000/xyz/plain_1/3/2/2.png)
 
