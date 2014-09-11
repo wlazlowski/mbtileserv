@@ -1,6 +1,6 @@
 {
   "name": "mbtileserv",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A Google/XYZ and TMS mbtiles tile server",
   "main": "index.js",
   "scripts": {
