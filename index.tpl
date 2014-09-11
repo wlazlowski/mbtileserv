@@ -18,12 +18,22 @@
         </style>
         <script>
 
-            var map;
+            var map,
+                layers = {};
 
             window.onload = function () {
                 map = L.map('map').setView([59.31566, 18.05955], 0);
-                L.tileLayer('plain_1/{z}/{x}/{y}.png', {
-                    tms: true
+
+                {{#layers}}
+                    layers['{{.}}'] = L.tileLayer('{{.}}/{z}/{x}/{y}.png', {
+                        tms: true
+                    });
+                {{/layers}}
+
+                layers['{{layers.0}}'].addTo(map);
+
+                L.control.layers(layers, null, {
+                    collapsed: false
                 }).addTo(map);
             }
 

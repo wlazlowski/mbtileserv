@@ -1,17 +1,17 @@
 #!/usr/bin/env node
 
-var async = require('async'),
+var fs = require('fs'),
+    async = require('async'),
     express = require('express'),
-    tilelive = require('tilelive');
-
-require('mbtiles').registerProtocols(tilelive);
-
-var app = express();
-
-app.use('/test.html', express.static(__dirname+'/test.html'));
+    tilelive = require('tilelive'),
+    mustache = require('mustache');
 
 var dir = process.argv[2] || '.',
     port = process.argv[3] || 5000;
+
+var tpl = fs.readFileSync('index.tpl').toString();
+
+require('mbtiles').registerProtocols(tilelive);
 
 function loadSources(dir, callback) {
     var sources = {};
@@ -36,6 +36,19 @@ function loadSources(dir, callback) {
 
 loadSources(dir, function (err, sources) {
     if (err) throw err;
+
+    var app = express();
+
+    app.get('/', function (req, res) {
+        var html = mustache.render(tpl, {
+            layers: Object.keys(sources)
+        });
+        res.set({
+            'Content-Type': 'text/html',
+            'Content-Length': html.length
+        });
+        res.send(html);
+    });
 
     app.get('/:layer/:z/:x/:y.:ext', function (req, res) {
         var layer = req.params.layer,
